@@ -44,34 +44,38 @@ Upload an image, run **YOLOv8** object detection, and get:
 ```bash
 git clone <https://github.com/IqramZargar/WEB-APPLICATION-For-Object-Detection.git>
 cd WEB-APPLICATION-For-Object-Detection
+
 2️⃣ Create and activate a virtual environment
+
 bash
-Copy
-Edit
+
 python3 -m venv venv
 source venv/bin/activate
+
 3️⃣ Install dependencies
+
 bash
-Copy
-Edit
+
 pip install -r requirements.txt
+
 4️⃣ Download YOLOv8 weights
+
 If yolov8n.pt is not included:
 
 bash
-Copy
-Edit
+
 wget <https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8n.pt>
+
 5️⃣ Apply migrations
 bash
-Copy
-Edit
+
 python manage.py migrate
+
 6️⃣ Run the development server
 bash
-Copy
-Edit
+
 python manage.py runserver
+
 🖥️ Usage
 Visit <http://127.0.0.1:8000/> in your browser.
 
@@ -83,10 +87,11 @@ Image with bounding boxes
 
 List of detected objects and confidence scores
 
+
 📜 Example Output
+
 makefile
-Copy
-Edit
+
 Person: 0.89
 Car: 0.78
 Dog: 0.91

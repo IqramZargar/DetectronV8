@@ -64,10 +64,10 @@ pip install torch torchvision torchaudio
 pip install -r requirements.txt
 
 4️⃣ Download YOLOv8 weights
-
-If yolov8n.pt is not included in the repo:
-
 wget https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8n.pt
+
+
+(Run only if yolov8n.pt is not included in the repo.)
 
 5️⃣ Apply migrations
 python manage.py migrate
@@ -113,7 +113,7 @@ Image Processing: OpenCV
 🤝 Contributing
 
 Pull requests are welcome!
-If you find bugs or have suggestions, open an issue.
+If you find bugs or have suggestions, please open an issue.
 
 📄 License
 

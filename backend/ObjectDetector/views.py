@@ -1,28 +1,47 @@
-# ObjectDetector/views.py
-
 from django.shortcuts import render
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework.parsers import MultiPartParser
-from .utils import run_detection  # assuming you have detection logic here
+from django.conf import settings
+import os
+from ultralytics import YOLO   # make sure you have ultralytics installed
 
-class ObjectDetectionView(APIView):
-    parser_classes = [MultiPartParser]
+# Load YOLO model once
+model = YOLO("yolov8n.pt")   # or your custom model
 
-    def post(self, request, *args, **kwargs):
-        image = request.FILES.get('image')
-        if not image:
-            return Response({'error': 'No image uploaded'}, status=400)
+def detection_view(request):
+    context = {}
+    if request.method == "POST":
+        img = request.FILES.get("image")
+        if img:
+            # Save uploaded file
+            save_path = os.path.join(settings.MEDIA_ROOT, img.name)
+            with open(save_path, "wb+") as f:
+                for chunk in img.chunks():
+                    f.write(chunk)
 
-        result = run_detection(image)  # assume your model returns JSON
-        return Response(result)
+            # Run YOLO detection
+            results = model(save_path)
 
-def upload_form(request):
-    if request.method == "POST" and "image" in request.FILES:
-        result = run_detection(request.FILES["image"])
-        return render(request, "upload.html", {
-            "image_url": result["image_url"],
-            "detections": result["detections"]
-        })
+            # Create a processed filename
+            processed_filename = f"processed_{img.name}"
+            processed_path = os.path.join(settings.MEDIA_ROOT, processed_filename)
 
-    return render(request, "upload.html")
+            # Save result image with bounding boxes
+            results[0].save(filename=processed_path)
+
+            # Extract detections for display
+            detections = []
+            for box in results[0].boxes:
+                cls_id = int(box.cls[0].item())
+                conf = float(box.conf[0].item())
+                label = results[0].names[cls_id]
+                detections.append({
+                    "label": label,
+                    "confidence": f"{conf:.2f}"
+                })
+
+            # Pass context to template
+            context = {
+                "image_url": settings.MEDIA_URL + processed_filename,
+                "detections": detections,
+            }
+
+    return render(request, "detection.html", context)

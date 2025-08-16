@@ -1,9 +1,9 @@
-# ObjectDetector/urls.py
-
 from django.urls import path
-from .views import ObjectDetectionView, upload_form
+from django.views.generic import TemplateView
+from . import views
 
 urlpatterns = [
-    path('detect/', ObjectDetectionView.as_view(), name='object-detect'),
-    path('', upload_form, name='upload-form'),  # basic upload form view
+    path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
+    path('detect/', views.detection_view, name='detection_page'),
 ]

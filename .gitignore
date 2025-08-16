@@ -4,7 +4,6 @@ __pycache__/
 
 # Django
 db.sqlite3
-/media/
 
 # Virtual environment
 venv/
@@ -14,3 +13,10 @@ venv/
 
 # YOLO weights (optional if large)
 *.pt
+
+# Ignore contents of results and uploads, but keep .gitkeep
+media/results/*
+!media/results/.gitkeep
+
+media/uploads/*
+!media/uploads/.gitkeep

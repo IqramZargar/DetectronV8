@@ -46,7 +46,7 @@ Upload an image, run YOLOv8 object detection, and get:
 ## ⚙️ Installation & Setup
 
 ### 1️⃣ Clone the repository
-```bash
+
 git clone https://github.com/IqramZargar/WEB-APPLICATION-For-Object-Detection.git
 cd WEB-APPLICATION-For-Object-Detection
 

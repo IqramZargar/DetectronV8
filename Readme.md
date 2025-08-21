@@ -115,6 +115,11 @@ Image Processing: OpenCV
 Pull requests are welcome!
 If you find bugs or have suggestions, please open an issue.
 
+## 👨‍💻 Contributors
+- [Asrar Shah](https://www.linkedin.com/in/asrar-shah-aba315373) — Frontend Developer
+- [Iqram Zargar](https://www.linkedin.com/in/iqram-zargar-750709375) — Backend Developer
+
+
 📄 License
 
 This project is licensed under the MIT License.

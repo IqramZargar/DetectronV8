@@ -1,254 +1,195 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About - YOLO Django Project</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #ff6a00, #ee0979);
-      color: #fff;
-      line-height: 1.6;
-    }
+{% block title %}About - YOLOv8{% endblock %}
 
-    header {
-      background: rgba(0, 0, 0, 0.4);
-      padding: 20px;
-      text-align: center;
-      border-bottom: 3px solid #00ffae;
-    }
+{% block extra_head %}
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ff6a00, #ee0979);
+    color: #fff;
+    line-height: 1.6;
+  }
 
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 5px;
-      color: #00ffae;
-    }
+  main section {
+    margin-bottom: 40px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
 
-    header p {
-      font-size: 1.1rem;
-      opacity: 0.9;
-    }
+  h2 {
+    color: #ffdd59;
+    margin-bottom: 10px;
+  }
 
-    main {
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
-    }
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
 
-    section {
-      margin-bottom: 40px;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
+  ul li::before {
+    content: "✔";
+    color: #00ffae;
+    margin-right: 8px;
+  }
 
-    h2 {
-      color: #ffdd59;
-      margin-bottom: 10px;
-    }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
 
-    ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
+  table th, table td {
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,0.3);
+    text-align: left;
+  }
 
-    ul li::before {
-      content: "✔";
-      color: #00ffae;
-      margin-right: 8px;
-    }
+  table th {
+    background-color: rgba(0,255,174,0.2);
+    color: #00ffae;
+  }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 15px;
-    }
+  code {
+    background: rgba(0,0,0,0.3);
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-family: monospace;
+    color: #ffb400;
+  }
 
-    table th, table td {
-      padding: 10px;
-      border: 1px solid rgba(255,255,255,0.3);
-      text-align: left;
-    }
+  a {
+    color: #00ffae;
+    text-decoration: none;
+  }
 
-    table th {
-      background-color: rgba(0,255,174,0.2);
-      color: #00ffae;
-    }
+  a:hover {
+    text-decoration: underline;
+  }
 
-    code {
-      background: rgba(0,0,0,0.3);
-      padding: 2px 6px;
-      border-radius: 5px;
-      font-family: monospace;
-      color: #ffb400;
-    }
+  /* Contributors */
+  .contributors {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .contributor {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .contributor img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #00ffae;
+    object-fit: cover;
+  }
+  .contributor-info p {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffdd59;
+  }
+  .role {
+    font-size: 0.95rem;
+    color: #0d0d0d;
+    margin: 3px 0 8px;
+    font-style: italic;
+  }
+</style>
+{% endblock %}
 
-    a {
-      color: #00ffae;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: rgba(0,0,0,0.4);
-      margin-top: 40px;
-      font-size: 0.9rem;
-      border-top: 3px solid #00ffae;
-    }
-
-    /* Contributors */
-    .contributors {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .contributor {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    .contributor img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 3px solid #00ffae;
-      object-fit: cover;
-    }
-    .contributor-info p {
-      margin: 0;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #ffdd59;
-    }
-    .role {
-      font-size: 0.95rem;
-      color: #0d0d0d;
-      margin: 3px 0 8px;
-      font-style: italic;
-    }
-    .contributor-info a {
-      margin-right: 10px;
-    }
-  </style>
-</head>
-<body>
-  <header>
+{% block content %}
+  <header style="text-align:center; margin-bottom:20px;">
     <h1>🖼️ YOLO-Django-Project</h1>
     <p>Real-time Object Detection using Django & YOLOv8</p>
   </header>
 
-  <main>
-    <section>
-      <h2>🎯 Goal of the Project</h2>
-      <ul>
-        <li>Upload an image and run YOLOv8 detection</li>
-        <li>Display image with bounding boxes & labels</li>
-        <li>Show list of detected objects with confidence scores</li>
-      </ul>
-    </section>
+  <section>
+    <h2>🎯 Goal of the Project</h2>
+    <ul>
+      <li>Upload an image and run YOLOv8 detection</li>
+      <li>Display image with bounding boxes & labels</li>
+      <li>Show list of detected objects with confidence scores</li>
+    </ul>
+  </section>
 
-    <section>
-      <h2>💡 How It Works — Step by Step</h2>
-      <ol>
-        <li>Open the web page and upload an image.</li>
-        <li>Click <b>Detect</b>.</li>
-        <li>Django saves the uploaded image.</li>
-        <li>YOLOv8 processes the image.</li>
-        <li>Bounding boxes & labels are drawn.</li>
-        <li>Results page shows the processed image & detected objects list.</li>
-      </ol>
-    </section>
+  <section>
+    <h2>💡 How It Works — Step by Step</h2>
+    <ol>
+      <li>Open the web page and upload an image.</li>
+      <li>Click <b>Detect</b>.</li>
+      <li>Django saves the uploaded image.</li>
+      <li>YOLOv8 processes the image.</li>
+      <li>Bounding boxes & labels are drawn.</li>
+      <li>Results page shows the processed image & detected objects list.</li>
+    </ol>
+  </section>
 
-    <section>
-      <h2>📂 Project Structure (Key Files)</h2>
-      <table>
-        <tr><th>File / Folder</th><th>Description</th></tr>
-        <tr><td><code>backend/</code></td><td>Main Django project</td></tr>
-        <tr><td><code>media/</code></td><td>Uploaded & processed images</td></tr>
-        <tr><td><code>yolov8n.pt</code></td><td>YOLOv8 model weights</td></tr>
-        <tr><td><code>templates/upload.html</code></td><td>Upload & results display</td></tr>
-        <tr><td><code>views.py</code></td><td>Handles uploads & detection</td></tr>
-        <tr><td><code>utils.py</code></td><td>YOLOv8 logic & processing</td></tr>
-        <tr><td><code>requirements.txt</code></td><td>Dependencies list</td></tr>
-      </table>
-    </section>
+  <section>
+    <h2>📂 Project Structure (Key Files)</h2>
+    <table>
+      <tr><th>File / Folder</th><th>Description</th></tr>
+      <tr><td><code>backend/</code></td><td>Main Django project</td></tr>
+      <tr><td><code>media/</code></td><td>Uploaded & processed images</td></tr>
+      <tr><td><code>yolov8n.pt</code></td><td>YOLOv8 model weights</td></tr>
+      <tr><td><code>templates/upload.html</code></td><td>Upload & results display</td></tr>
+      <tr><td><code>views.py</code></td><td>Handles uploads & detection</td></tr>
+      <tr><td><code>utils.py</code></td><td>YOLOv8 logic & processing</td></tr>
+      <tr><td><code>requirements.txt</code></td><td>Dependencies list</td></tr>
+    </table>
+  </section>
 
-    <section>
-      <h2>⚙️ Installation & Setup</h2>
-      <ol>
-        <li><b>Clone the repository:</b><br><code>git clone https://github.com/IqramZargar/WEB-APPLICATION-For-Object-Detection.git</code></li>
-        <li><b>Create virtual environment:</b><br><code>python3 -m venv venv</code><br><code>source venv/bin/activate</code></li>
-        <li><b>Install dependencies:</b><br><code>pip install -r requirements.txt</code></li>
-        <li><b>Download YOLOv8 weights:</b><br><code>wget https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8n.pt</code></li>
-        <li><b>Apply migrations:</b><br><code>python manage.py migrate</code></li>
-        <li><b>Run server:</b><br><code>python manage.py runserver</code></li>
-      </ol>
-    </section>
+  <section>
+    <h2>⚙️ Installation & Setup</h2>
+    <ol>
+      <li><b>Clone the repository:</b><br><code>git clone https://github.com/IqramZargar/WEB-APPLICATION-For-Object-Detection.git</code></li>
+      <li><b>Create virtual environment:</b><br><code>python3 -m venv venv</code><br><code>source venv/bin/activate</code></li>
+      <li><b>Install dependencies:</b><br><code>pip install -r requirements.txt</code></li>
+      <li><b>Download YOLOv8 weights:</b><br><code>wget https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8n.pt</code></li>
+      <li><b>Apply migrations:</b><br><code>python manage.py migrate</code></li>
+      <li><b>Run server:</b><br><code>python manage.py runserver</code></li>
+    </ol>
+  </section>
 
-    <section>
-      <h2>🛠 Tech Stack</h2>
-      <ul>
-        <li>Backend: Django</li>
-        <li>ML Model: YOLOv8 (Ultralytics)</li>
-        <li>Language: Python</li>
-        <li>Frontend: HTML + Django Templates</li>
-        <li>Image Processing: OpenCV</li>
-      </ul>
-    </section>
+  <section>
+    <h2>🛠 Tech Stack</h2>
+    <ul>
+      <li>Backend: Django</li>
+      <li>ML Model: YOLOv8 (Ultralytics)</li>
+      <li>Language: Python</li>
+      <li>Frontend: HTML + Django Templates</li>
+      <li>Image Processing: OpenCV</li>
+    </ul>
+  </section>
 
-    <section>
-      <h2>🤝 Contributing</h2>
-      <p>Pull requests are welcome! Found a bug or suggestion? Open an issue.</p>
-    </section>
-
-    <section>
-      <h2>📄 License</h2>
-      <p>This project is licensed under the MIT License.</p>
-    </section>
-
-    <!-- Contributors -->
-    <section>
-      <h2>👨‍💻 Project Designers</h2>
-      <div class="contributors">
-
-        <!-- Asrar -->
-        <div class="contributor">
-          <img src="{% static 'images/asrar.jpg' %}" alt="Asrar Shah">
-          <div class="contributor-info">
-            <p>Asrar Shah</p>
-            <div class="role">Frontend Developer 🎨</div>
-            <a href="mailto:shahasrar600@gmail.com" target="_blank">Gmail📩</a>┃
-            <a href="https://www.linkedin.com/in/asrar-shah-aba315373" target="_blank">LinkedIn🔗</a>
-          </div>
+  <section>
+    <h2>👨‍💻 Project Designers</h2>
+    <div class="contributors">
+      <div class="contributor">
+        <img src="{% static 'images/asrar.jpg' %}" alt="Asrar Shah">
+        <div class="contributor-info">
+          <p>Asrar Shah</p>
+          <div class="role">Frontend Developer 🎨</div>
+          <a href="mailto:shahasrar600@gmail.com" target="_blank">Gmail📩</a>┃
+          <a href="https://www.linkedin.com/in/asrar-shah-aba315373" target="_blank">LinkedIn🔗</a>
         </div>
-
-        <!-- Iqram -->
-        <div class="contributor">
-          <img src="{% static 'images/ikram.jpg' %}" alt="Iqram Zargar">
-          <div class="contributor-info">
-            <p>Iqram Zargar</p>
-            <div class="role">Backend Developer ⚙️</div>
-            <a href="mailto:ikramzargar@gmail.com" target="_blank">Gmail📩</a>┃
-            <a href="https://www.linkedin.com/in/iqram-zargar-750709375" target="_blank">LinkedIn🔗</a>
-          </div>
-        </div>
-
       </div>
-    </section>
-  </main>
 
-  <footer>
-    &copy; 2025 YOLO-Django-Project  
-  </footer>
-</body>
-</html>
+      <div class="contributor">
+        <img src="{% static 'images/ikram.jpg' %}" alt="Iqram Zargar">
+        <div class="contributor-info">
+          <p>Iqram Zargar</p>
+          <div class="role">Backend Developer ⚙️</div>
+          <a href="mailto:ikramzargar@gmail.com" target="_blank">Gmail📩</a>┃
+          <a href="https://www.linkedin.com/in/iqram-zargar-750709375" target="_blank">LinkedIn🔗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

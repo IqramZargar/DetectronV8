@@ -6,7 +6,6 @@
   <title>{% block title %}YOLOv8 Object Detection{% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    /* ---------- Simple, shared styles (you can move to static later) ---------- */
     :root {
       --accent1: #ff6a00;
       --accent2: #ee0979;
@@ -57,19 +56,6 @@
       margin: 28px 16px;
     }
 
-    footer.site-footer{
-      width:100%;
-      padding:12px 18px;
-      color:white;
-      background: rgba(0,0,0,0.18);
-      border-top: 1px solid rgba(255,255,255,0.04);
-      display:flex;
-      justify-content:center;
-      gap:16px;
-      position: sticky;
-      bottom:0;
-    }
-
     @media (max-width:700px){
       header.site-header{ flex-direction:column; gap:8px; align-items:flex-start; padding:12px; }
       nav a{ margin-left:8px; padding:7px 10px; }
@@ -92,10 +78,5 @@
   <main class="container">
     {% block content %}{% endblock %}
   </main>
-
-  <footer class="site-footer">
-    <div>Front End: Asrar Shah — <a href="mailto:shahasrar600@gmail.com" style="color:inherit;text-decoration:underline">Gmail</a></div>
-    <div>Back End: Iqram Zargar — <a href="mailto:ikramzargar@gmail.com" style="color:inherit;text-decoration:underline">Gmail</a></div>
-  </footer>
 </body>
 </html>

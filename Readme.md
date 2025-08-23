@@ -1,4 +1,4 @@
-# 🖼️ YOLO-Django-Project
+# 🖼️ DetectronV8
 
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 ![Django](https://img.shields.io/badge/django-5.2-green)

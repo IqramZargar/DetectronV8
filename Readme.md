@@ -48,7 +48,7 @@ Upload an image, run YOLOv8 object detection, and get:
 ### 1️⃣ Clone the repository
 
 git clone https://github.com/IqramZargar/DetectronV8.git
-cd WEB-APPLICATION-For-Object-Detection
+cd DetectronV8
 
 
 2️⃣ Create and activate a virtual environment
